@@ -28,7 +28,10 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/user/update/**").hasRole("USER")
+                        .requestMatchers("/user/join").permitAll()
                         .requestMatchers("/**").permitAll());
+
 
         http
                 .formLogin(Customizer.withDefaults());

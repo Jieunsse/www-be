@@ -45,7 +45,6 @@ public class UserService implements UserDetailsService {
         return false;
     }
 
-
     @Transactional
     public void createOneUser(UserRequestDTO dto) {
 
@@ -82,9 +81,9 @@ public class UserService implements UserDetailsService {
     @Transactional(readOnly = true)
     public List<UserResponseDTO> readAllUsers() {
 
-        List<UserEntity> list = userRepository.findAll();
-
+        List<UserEntity> list = userRepository.findAll(); // list 에 모든 유저 정보가 담김
         List<UserResponseDTO> dtos = new ArrayList<>();
+
         for (UserEntity user : list) {
             UserResponseDTO dto = new UserResponseDTO();
             dto.setUsername(user.getUsername());
